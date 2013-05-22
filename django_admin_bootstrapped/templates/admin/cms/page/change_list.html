@@ -20,27 +20,47 @@
 <style>
   #sitemap li .col-published label { display:inline; }
 
+
+#sitemap li .col-softroot,
+#sitemap li .col-language,
+#sitemap li .col-actions,
+#sitemap li .col-published,
+#sitemap li .col-navigation,
+#sitemap li .col-moderator,
+#sitemap li .col-lastchange,
+#sitemap li .col-draft,
+#sitemap li .col-view-perms,
+#sitemap li .col-creator { opacity:1; }
+
 #sitemap li a.copy,
 #sitemap li a.move,
 #sitemap li a.addlink,
 #sitemap li a.deletelink {
-height: auto;
-display: inline-block;
-padding: 0 6px;
-width: auto;
+  height: auto;
+  display: inline-block;
+  padding: 0 6px;
+  width: auto;
 }
 
 #sitemap li a.copy,
 #sitemap li a.move,
 #sitemap li a.addlink {
   background:none;
-margin-right: 4px;
-display: inline-block;
-background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
-background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
-background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
-background-image: -o-linear-gradient(top,#fff,#e6e6e6);
-background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+  margin-right: 4px;
+  display: inline-block;
+  background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+  background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+  background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+}
+#sitemap li a.deletelink {
+  padding:0;
+  text-align:center;
+  width:20px;
+}
+#sitemap li a.deletelink i {
+  font-size:14px;
 }
 
 #sitemap .cont:hover a,
