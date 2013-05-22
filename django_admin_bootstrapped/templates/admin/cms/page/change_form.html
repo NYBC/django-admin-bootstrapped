@@ -68,6 +68,12 @@ fieldset.collapsed h2,
   line-height: 40px;
   margin:0;
 }
+
+.plugin-holder .form-row { margin-left:-9px; }
+
+form .form-row p { padding-left:9px; }
+
+.inline-related fieldset { background:transparent; }
 -->
 </style>
 
@@ -146,7 +152,7 @@ fieldset.collapsed h2,
 
 {% if not add %}
 	{% if CMS_PERMISSION and can_change_permissions %}
-		<div class="inline-group">
+		<div class="well well-small">
 			<div class="tabular inline-related">
 				<fieldset id="inherited_permissions" class="module aligned collapse">
 				  <h2>{% trans 'All permissions' %}</h2>
@@ -157,7 +163,7 @@ fieldset.collapsed h2,
 		</div>
 	{% endif %}
 
-    <div class="inline-group">
+    <div class="well well-small">
         <div class="tabular inline-related">
             <fieldset id="page_states" class="module aligned collapse">
               <h2 class="load_remote">{% trans 'Page states' %}</h2>

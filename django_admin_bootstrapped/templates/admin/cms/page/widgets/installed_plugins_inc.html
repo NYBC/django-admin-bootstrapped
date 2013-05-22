@@ -1,5 +1,5 @@
 {% load i18n %}
-<div class="plugin-select-holder">
+<div class="plugin-select-holder form-horizontal">
     <select name="plugins">
         <option value="" selected="selected">{% trans "Available Plugins" %}</option>
 	{% regroup installed_plugins by module as module_list %}
@@ -12,7 +12,7 @@
 	{% endfor %}
     </select>
     {% if not add %}
-    <span class="add-plugin addlink">{% trans "Add Plugin" %}</span>
+    <span class="btn btn-mini add-plugin addlink">{% trans "Add Plugin" %}</span>
     {% if show_copy %}
     <select name="copy-plugins">
         <option value="" selected="selected">{% trans "From Language" %}</option>
