@@ -74,6 +74,8 @@ fieldset.collapsed h2,
 form .form-row p { padding-left:9px; }
 
 .inline-related fieldset { background:transparent; }
+
+textarea { min-width:420px; }
 -->
 </style>
 
@@ -93,16 +95,16 @@ form .form-row p { padding-left:9px; }
 {% block object-tools %}
 {% if change %}{% if not is_popup %}
   <div class="pull-right">
-  {% if can_publish %}
-    <a href="publish/" class="btn btn-primary publishlink">{% trans "Publish draft" %}</a>
-    <a href="preview/?language={{ language }}" class="btn previewdraftlink">{% trans "Preview draft" %}</a>
-  {% endif %}
+  <a href="history/" class="btn btn-inverse historylink">{% trans "History" %}</a>
   {% if can_change and page.published and page.is_dirty %}
     <a href="revert/" class="btn revertlink">{% trans "Revert to public" %}</a>
   {% endif %}
-  <a href="history/" class="btn btn-inverse historylink">{% trans "History" %}</a>
+  {% if can_publish %}
+    <a href="preview/?language={{ language }}" class="btn previewdraftlink">{% trans "Preview draft" %}</a>
+    <a href="publish/" class="btn btn-primary publishlink">{% trans "Publish draft" %}</a>
+  {% endif %}
   {% if page.publisher_public %}
-    <a href="preview/?public=1&language={{ language }}" class="btn btn-inverse">{% trans "View on site" %}</a>
+    <a href="preview/?public=1&language={{ language }}" class="btn btn-info">{% trans "View on site" %}</a>
   {% endif%}
   </div>
 {% endif %}{% endif %}

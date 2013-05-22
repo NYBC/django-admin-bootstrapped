@@ -17,6 +17,44 @@
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cms/jstree/tree_component.css" />
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cms/css/jquery.dialog.css" />
 
+<style>
+  #sitemap li .col-published label { display:inline; }
+
+#sitemap li a.copy,
+#sitemap li a.move,
+#sitemap li a.addlink,
+#sitemap li a.deletelink {
+height: auto;
+display: inline-block;
+padding: 0 6px;
+width: auto;
+}
+
+#sitemap li a.copy,
+#sitemap li a.move,
+#sitemap li a.addlink {
+  background:none;
+margin-right: 4px;
+display: inline-block;
+background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+}
+
+#sitemap .cont:hover a,
+#sitemap .cont:hover .col-language,
+#sitemap .cont:hover .col-language a {
+  color:#333;
+}
+div#sitemap a:hover {
+  text-decoration: none;
+}
+
+</style>
+
+
 {{ block.super }}
 <script type="text/javascript" src="{% admin_static_url %}js/jquery.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}cms/js/csrf.js"></script>
