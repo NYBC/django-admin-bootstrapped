@@ -41,7 +41,7 @@
 					<a href="./add/?target={{ page.id }}&amp;position=last-child" class="addlink btn" title="{% trans "Add Child" %}" id="add-link-{{ page.id }}">{% trans "add" %}</a>
 				{% endif %}
 			{% endif %}
-			{% if has_delete_permission %}<a href="{{ page.id }}/delete/" title="{% trans "Delete" %}" class="deletelink btn btn-mini btn-danger">{% trans "delete" %}</a>{% endif %}
+			{% if has_delete_permission %}<a href="{{ page.id }}/delete/" title="{% trans "Delete" %}" class="deletelink btn btn-mini btn-danger"><i class="icon-remove icon-white">&nbsp;</i></a>{% endif %}
 		</div>
 
 		<div class="col-navigation">
