@@ -66,29 +66,33 @@
 
 
 {% block breadcrumbs %}{% if not is_popup %}
-<div class="breadcrumbs">
-     <a href="../../../">{% trans "Home" %}</a> &rsaquo;
-     <a href="../../">{{ app_label|capfirst|escape }}</a> &rsaquo; 
-     {% if can_change %}<a href="../">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %} &rsaquo;
-     {% if add %}{% trans "Add" %} {{ opts.verbose_name }}{% else %}{{ original.get_title|truncatewords:"18" }}{% endif %}
-</div>
+<ul class="breadcrumb">
+  <li><a href="../../../">{% trans "Home" %}</a><span class="divider">/</span></li>
+  <li><a href="../../">{{ app_label|capfirst|escape }}</a><span class="divider">/</span></li>
+  {% if has_change_permission %}<li><a href="../">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %}<span class="divider">/</span></li>
+  <li>{% if add %}{% trans "Add" %} {{ opts.verbose_name }}{% else %}{{ original.get_title|truncatewords:"18" }}{% endif %}</li>
+</ul>
 {% endif %}{% endblock %}
-
-{% block content %}<div id="content-main">
 
 {% block object-tools %}
 {% if change %}{% if not is_popup %}
-  <ul class="object-tools">
-	{% if can_publish %}
-	<li><a href="publish/" class="publishlink">{% trans "Publish draft" %}</a></li>
-	<li><a href="preview/?language={{ language }}" class="previewdraftlink">{% trans "Preview draft" %}</a></li>
-	{% endif %}
-	{% if can_change and page.published and page.is_dirty %}<li><a href="revert/" class="revertlink">{% trans "Revert to public" %}</a></li>{% endif %}
-	<li><a href="history/" class="historylink">{% trans "History" %}</a></li>
-  	{% if page.publisher_public %}<li><a href="preview/?public=1&language={{ language }}">{% trans "View on site" %}</a></li>{% endif%}
-  </ul>
+  <div class="pull-right">
+  {% if can_publish %}
+    <a href="publish/" class="btn btn-primary publishlink">{% trans "Publish draft" %}</a>
+    <a href="preview/?language={{ language }}" class="btn previewdraftlink">{% trans "Preview draft" %}</a>
+  {% endif %}
+  {% if can_change and page.published and page.is_dirty %}
+    <a href="revert/" class="btn revertlink">{% trans "Revert to public" %}</a>
+  {% endif %}
+  <a href="history/" class="btn btn-inverse historylink">{% trans "History" %}</a>
+  {% if page.publisher_public %}
+    <a href="preview/?public=1&language={{ language }}" class="btn btn-inverse">{% trans "View on site" %}</a>
+  {% endif%}
+  </div>
 {% endif %}{% endif %}
 {% endblock %}
+
+{% block content %}<div id="content-main">
 
 
 <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="?language={{ language }}{%if request.GET.target %}&amp;target={{ request.GET.target }}{% endif %}&amp;{%if request.GET.target %}position={{ request.GET.position }}{% endif %}" method="post" id="page_form">{% csrf_token %}{% block form_top %}{% endblock %}
@@ -157,10 +161,12 @@
 {% block after_related_objects %}{% endblock %}
 
 {% if add %}
-	<div class="submit-row"{% if is_popup %} style="overflow: auto;"{% endif %}>
-		<input type="submit" name="_save" class="default" value="{% trans 'Save' %}" {{ onclick_attrib }}/>
-		<input type="submit" name="_continue" value="{% trans 'Save and continue editing' %}" {{ onclick_attrib }}/>
-	</div>
+  <div class="form-actions"{% if is_popup %} style="overflow: auto;"{% endif %}>
+    <div class="pull-right">
+      <button type="submit" name="_continue" class="btn" {{ onclick_attrib }}>{% trans 'Save and continue editing' %}</button>
+      <button type="submit" name="_save" class="btn btn-primary" {{ onclick_attrib }}>{% trans 'Save' %}</button>
+    </div>
+  </div>
 {% else %}
 	{% if not moderation_delete_request %}{% page_submit_row %}{% endif %}
 {% endif %}
